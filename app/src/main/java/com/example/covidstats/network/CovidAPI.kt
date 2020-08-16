@@ -5,7 +5,7 @@ import com.example.covidstats.model.Result.Success
 import com.example.covidstats.model.Result.Failure
 import com.example.covidstats.model.Result
 
-class CovidAPI (private val apiService: CovidAPIService) {
+class CovidAPI(private val apiService: CovidAPIService) {
 
     suspend fun getStatusSummary(): Result<CovidStatusSummary> = try {
 

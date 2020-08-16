@@ -41,6 +41,7 @@ class DashboardFragment : Fragment() {
                     active_cases.text = active.toString()
                     recovered_cases.text = result.data.Global.TotalRecovered.toString()
                     total_death.text = result.data.Global.TotalDeaths.toString()
+                    viewModel.insertCountryStats(result.data.Countries)
                 }
                 is Failure -> displayToast(result.error?.localizedMessage)
             }
@@ -51,10 +52,4 @@ class DashboardFragment : Fragment() {
     private fun displayToast(message: String?) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
-
-    /*private fun getStatusSummary() {
-        CoroutineScope(Dispatchers.Main).launch {
-            viewModel.getStatusSummary()
-        }
-    }*/
 }
