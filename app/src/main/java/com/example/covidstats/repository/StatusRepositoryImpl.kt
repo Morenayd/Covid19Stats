@@ -1,20 +1,32 @@
 package com.example.covidstats.repository
 
-import android.widget.Toast
 import com.example.covidstats.App
-import com.example.covidstats.model.Success
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.covidstats.model.CovidStatusSummary
+import com.example.covidstats.model.Result
+import com.example.covidstats.model.Result.Failure
+import com.example.covidstats.model.Result.Success
+import com.example.covidstats.network.CovidAPIService
+import retrofit2.HttpException
+import java.io.IOException
 
-class StatusRepositoryImpl: StatusRepository {
+class StatusRepositoryImpl(private val service: CovidAPIService): StatusRepository {
     val api = App.statusAPI
 
-    override fun getStatusSummary() {
-        TODO("Not yet implemented")
+    override suspend fun getStatusSummary(): Result<CovidStatusSummary> {
+        return try {
+            Success(service.getStatusSummary())
+        } catch (exception: IOException) {
+            return Failure(exception.cause)
+        } catch (exception: HttpException) {
+            return Failure(exception.cause)
+        }
     }
 
     override fun insertStatusSummary() {
+        TODO("Not yet implemented")
+    }
+
+    /*override fun insertStatusSummary() {
         suspend fun getStatusSummary() =
             CoroutineScope(Dispatchers.Main).launch {
                 val result = api.getStatusSummary()
@@ -25,5 +37,5 @@ class StatusRepositoryImpl: StatusRepository {
                     Toast.makeText(App.getApplicationContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
+    }*/
 }

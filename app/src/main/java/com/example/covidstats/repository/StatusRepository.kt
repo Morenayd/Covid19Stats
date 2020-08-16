@@ -1,6 +1,9 @@
 package com.example.covidstats.repository
 
+import com.example.covidstats.model.CovidStatusSummary
+import com.example.covidstats.model.Result
+
 interface StatusRepository {
-    fun getStatusSummary()
+    suspend fun getStatusSummary() : Result<CovidStatusSummary>
     fun insertStatusSummary()
 }

@@ -1,7 +1,10 @@
 package com.example.covidstats.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class CovidStatusSummary (
-    val countries: List<Country>,
-    val date: String,
-    val global: Global
+    val Countries: List<Country>,
+    val Date: String,
+    val Global: Global
 )
