@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidstats.databinding.FragmentCountriesStatsBinding
 import com.example.covidstats.viewmodel.DashboardViewModel
 
@@ -32,10 +31,10 @@ class CountriesStatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = CountriesStatsAdapter()
+        binding.statList.addItemDecoration(MarginItemDecoration(16))
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
-        binding.statList.layoutManager = LinearLayoutManager(activity)
         binding.statList.adapter = adapter
     }
 
