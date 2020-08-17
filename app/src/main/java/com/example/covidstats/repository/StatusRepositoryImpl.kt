@@ -1,5 +1,6 @@
 package com.example.covidstats.repository
 
+import androidx.lifecycle.LiveData
 import com.example.covidstats.database.CovidStatusDao
 import com.example.covidstats.model.Country
 import com.example.covidstats.model.CovidStatusSummary
@@ -31,7 +32,7 @@ class StatusRepositoryImpl(private val service: CovidAPIService, private val dao
         }
     }
 
-    override fun getCountryStats(): List<com.example.covidstats.database.localmodel.Country?> {
-        return dao.getCountryStats()
+    override fun getSearchAllCountries(searchQuery: String?): LiveData<List<Country?>> {
+        return dao.getSearchAllCountries("%$searchQuery%")
     }
 }

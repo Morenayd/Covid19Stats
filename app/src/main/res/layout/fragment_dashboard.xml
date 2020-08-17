@@ -30,22 +30,6 @@
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:hint="Search"
-            android:inputType="textFilter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -55,7 +39,7 @@
             android:layout_marginTop="32dp"
             android:text="COVID19 - Statistics"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@id/textView" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -188,6 +172,20 @@
                 android:layout_marginStart="16dp" />
 
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/view_all_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorAccent"
+            android:text="View All Countries' Statistics"
+            android:textAllCaps="false"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

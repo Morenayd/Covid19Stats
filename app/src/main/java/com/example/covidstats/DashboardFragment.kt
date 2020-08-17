@@ -9,12 +9,12 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.covidstats.databinding.FragmentDashboardBinding
 import com.example.covidstats.model.Result.Loading
 import com.example.covidstats.model.Result.Success
 import com.example.covidstats.model.Result.Failure
 import com.example.covidstats.viewmodel.DashboardViewModel
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment() {
 
@@ -31,21 +31,24 @@ class DashboardFragment : Fragment() {
             inflater, R.layout.fragment_dashboard, container, false
         )
         viewModel =
-            ViewModelProvider(this, App.provideViewModelFactory()).get(DashboardViewModel::class.java)
+            ViewModelProvider(this, App.provideViewModelFactory())[DashboardViewModel::class.java]
         viewModel.summary.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Loading -> displayToast(result.message)
                 is Success -> {
                     val active = result.data.Global.TotalConfirmed - result.data.Global.TotalDeaths - result.data.Global.TotalRecovered
-                    confirmed_cases.text = result.data.Global.TotalConfirmed.toString()
-                    active_cases.text = active.toString()
-                    recovered_cases.text = result.data.Global.TotalRecovered.toString()
-                    total_death.text = result.data.Global.TotalDeaths.toString()
+                    binding.confirmedCases.text = result.data.Global.TotalConfirmed.toString()
+                    binding.activeCases.text = active.toString()
+                    binding.recoveredCases.text = result.data.Global.TotalRecovered.toString()
+                    binding.totalDeath.text = result.data.Global.TotalDeaths.toString()
                     viewModel.insertCountryStats(result.data.Countries)
                 }
                 is Failure -> displayToast(result.error?.localizedMessage)
             }
         })
+        binding.viewAllButton.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_countriesStatsFragment)
+        }
         return binding.root
     }
 
