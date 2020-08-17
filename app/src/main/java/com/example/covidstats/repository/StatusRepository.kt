@@ -7,5 +7,5 @@ import com.example.covidstats.model.Result
 interface StatusRepository {
     suspend fun getStatusSummary() : Result<CovidStatusSummary>
     fun insertCountryStats(countries: List<Country?>)
-    fun getCountryStats(): List<com.example.covidstats.database.localmodel.Country?>
+    suspend fun getCountryStats(): List<Country?>
 }

@@ -16,7 +16,7 @@ class DashboardViewModel(private val statusRepository: StatusRepository) : ViewM
         statusRepository.insertCountryStats(countries)
     }
 
-    val countryStats: LiveData<List<com.example.covidstats.database.localmodel.Country?>> = liveData {
+    val countryStats: LiveData<List<Country?>> = liveData {
         emit(statusRepository.getCountryStats())
     }
 }

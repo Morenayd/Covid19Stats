@@ -6,17 +6,15 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "country_table")
 data class Country (
-    @PrimaryKey
-    val country: String,
-    val countryCode: String,
-    val date: String,
-    val newConfirmed: Int,
-    val newDeaths: Int,
-    val newRecovered: Int,
-    val slug: String,
-    val totalConfirmed: Int,
-    val totalDeaths: Int,
-    val totalRecovered: Int
+    var country: String,
+    var countryCode: String,
+    var date: String,
+    var newConfirmed: Int,
+    var newDeaths: Int,
+    var newRecovered: Int,
+    var slug: String,
+    var totalConfirmed: Int,
+    var totalDeaths: Int,
+    var totalRecovered: Int
 ) : Parcelable

@@ -31,7 +31,7 @@ class StatusRepositoryImpl(private val service: CovidAPIService, private val dao
         }
     }
 
-    override fun getCountryStats(): List<com.example.covidstats.database.localmodel.Country?> {
+    override suspend fun getCountryStats(): List<Country?> {
         return dao.getCountryStats()
     }
 }
