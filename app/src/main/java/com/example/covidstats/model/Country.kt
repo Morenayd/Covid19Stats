@@ -1,14 +1,17 @@
 package com.example.covidstats.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Country (
-    val country: String,
-    val countryCode: String,
-    val date: String,
-    val newConfirmed: Int,
-    val newDeaths: Int,
-    val newRecovered: Int,
-    val slug: String,
-    val totalConfirmed: Int,
-    val totalDeaths: Int,
-    val totalRecovered: Int
+    val Country: String,
+    val CountryCode: String,
+    val Date: String,
+    val NewConfirmed: Int,
+    val NewDeaths: Int,
+    val NewRecovered: Int,
+    val Slug: String,
+    val TotalConfirmed: Int,
+    val TotalDeaths: Int,
+    val TotalRecovered: Int
 )

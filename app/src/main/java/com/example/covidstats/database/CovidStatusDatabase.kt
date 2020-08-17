@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.covidstats.database.localmodel.Country
 import com.example.covidstats.model.CovidStatusSummary
 
-@Database(entities = [CovidStatusSummary::class], version = 6, exportSchema = false)
+@Database(entities = [Country::class], version = 0, exportSchema = false)
 abstract class CovidStatusDatabase : RoomDatabase() {
 
     abstract fun statusDao(): CovidStatusDao

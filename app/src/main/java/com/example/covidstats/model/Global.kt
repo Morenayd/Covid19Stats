@@ -1,10 +1,13 @@
 package com.example.covidstats.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Global (
-    val newConfirmed: Int,
-    val newDeaths: Int,
-    val newRecovered: Int,
-    val totalConfirmed: Int,
-    val totalDeaths: Int,
-    val totalRecovered: Int
+    val NewConfirmed: Int,
+    val NewDeaths: Int,
+    val NewRecovered: Int,
+    val TotalConfirmed: Int,
+    val TotalDeaths: Int,
+    val TotalRecovered: Int
 )

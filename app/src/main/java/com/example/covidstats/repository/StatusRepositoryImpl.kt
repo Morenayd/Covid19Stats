@@ -1,29 +1,37 @@
 package com.example.covidstats.repository
 
-import android.widget.Toast
-import com.example.covidstats.App
-import com.example.covidstats.model.Success
+import com.example.covidstats.database.CovidStatusDao
+import com.example.covidstats.model.Country
+import com.example.covidstats.model.CovidStatusSummary
+import com.example.covidstats.model.Result
+import com.example.covidstats.model.Result.Failure
+import com.example.covidstats.model.Result.Success
+import com.example.covidstats.network.CovidAPIService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.io.IOException
 
-class StatusRepositoryImpl: StatusRepository {
-    val api = App.statusAPI
+class StatusRepositoryImpl(private val service: CovidAPIService, private val dao: CovidStatusDao) : StatusRepository {
 
-    override fun getStatusSummary() {
-        TODO("Not yet implemented")
+    override suspend fun getStatusSummary(): Result<CovidStatusSummary> {
+        return try {
+            Success(service.getStatusSummary())
+        } catch (exception: IOException) {
+            return Failure(exception.cause)
+        } catch (exception: HttpException) {
+            return Failure(exception.cause)
+        }
     }
 
-    override fun insertStatusSummary() {
-        suspend fun getStatusSummary() =
-            CoroutineScope(Dispatchers.Main).launch {
-                val result = api.getStatusSummary()
+    override fun insertCountryStats(countries: List<Country?>) {
+        CoroutineScope(Dispatchers.Main).launch {
+            dao.insertCountryStats(countries)
+        }
+    }
 
-                if (result is Success) {
-                    App.statusDao.insertCovidStatusData(result.data)
-                } else {
-                    Toast.makeText(App.getApplicationContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show()
-                }
-            }
+    override fun getCountryStats(): List<com.example.covidstats.database.localmodel.Country?> {
+        return dao.getCountryStats()
     }
 }

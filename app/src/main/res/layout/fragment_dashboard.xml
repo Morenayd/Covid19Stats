@@ -40,8 +40,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Search"
+            android:hint="Search"
+            android:inputType="textFilter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -76,7 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="TextView" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:text="62,034" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -84,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="64dp"
-                android:text="TextView" />
+                android:text="Confirmed Cases"
+                android:layout_marginStart="16dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -107,7 +109,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="TextView" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:text="123,495" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -115,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="64dp"
-                android:text="TextView" />
+                android:text="Active Cases"
+                android:layout_marginStart="16dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -138,7 +142,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="TextView" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:text="11,024" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -146,7 +151,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="64dp"
-                android:text="TextView" />
+                android:text="Total Deaths"
+                android:layout_marginStart="16dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -169,7 +175,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="TextView" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:text="1,895,021" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -177,7 +184,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="64dp"
-                android:text="TextView" />
+                android:text="Recovered Cases"
+                android:layout_marginStart="16dp" />
 
         </androidx.cardview.widget.CardView>
 
