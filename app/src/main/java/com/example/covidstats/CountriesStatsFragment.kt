@@ -1,10 +1,9 @@
 package com.example.covidstats
 
 import android.os.Bundle
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,16 +25,33 @@ class CountriesStatsFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_countries_stats, container, false
         )
+        setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = CountriesStatsAdapter()
-        viewModel.countryStats.observe(viewLifecycleOwner, Observer {
+        viewModel.countries.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
         binding.statList.layoutManager = LinearLayoutManager(activity)
         binding.statList.adapter = adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
+        val searchMenu = menu.findItem(R.id.action_search)
+        val searchView = searchMenu.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.getSearchResults(newText)
+                return false
+            }
+        })
     }
 }
