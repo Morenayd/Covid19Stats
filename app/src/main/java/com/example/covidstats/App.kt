@@ -13,10 +13,10 @@ import com.example.covidstats.viewmodel.ViewModelFactory
 class App : Application() {
     companion object {
         private lateinit var instance: App
-
+        private fun getAppContext(): Context = instance.applicationContext
         private val apiService by lazy { buildAPIService() }
         private val statusDao: CovidStatusDao by lazy {
-            CovidStatusDatabase.getInstance(instance.applicationContext).statusDao()
+            CovidStatusDatabase.getInstance(getAppContext()).statusDao()
         }
 
         fun provideViewModelFactory(): ViewModelFactory {

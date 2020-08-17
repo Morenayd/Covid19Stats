@@ -1,5 +1,6 @@
 package com.example.covidstats.model
 
+import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
 @Serializable
